@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container,
+        .register-container {
+            width: 40%;
+        }
+
+        .toggle-container {
+            display: none;
+        }
+
+        .active .toggle-container {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container auth-container">
+        <div class="login-container active" id="login-container">
+            <form>
+                <h2>Iniciar sesión</h2>
+                <div class="mb-3">
+                    <label for="login-email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="login-email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="login-password" required>
+                </div>
+                <div class="mb-3">
+                    <label>Iniciar sesión con:</label>
+                    <button class="btn btn-outline-primary">Google</button>
+                    <button class="btn btn-outline-info">Microsoft</button>
+                    <button class="btn btn-outline-dark">Facebook</button>
+                </div>
+                <div class="mb-3">
+                    <a href="#">Olvidé mi contraseña</a>
+                </div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+            <div class="toggle-container">
+                <p>¿No tienes una cuenta? Regístrate aquí</p>
+                <button id="switch-to-register" class="btn btn-secondary">Registrarse</button>
+            </div>
+        </div>
+        <div class="register-container" id="register-container">
+            <form>
+                <h2>Registrarse</h2>
+                <div class="mb-3">
+                    <label for="register-email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="register-email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="register-password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="register-password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="register-confirm-password" class="form-label">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="register-confirm-password" required>
+                </div>
+                <button type="submit" class="btn btn-success">Registrarse</button>
+            </form>
+            <div class="toggle-container">
+                <p>¿Ya tienes una cuenta? Inicia sesión aquí</p>
+                <button id="switch-to-login" class="btn btn-secondary">Iniciar sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("switch-to-register").addEventListener("click", function() {
+            document.getElementById("login-container").classList.remove("active");
+            document.getElementById("register-container").classList.add("active");
+        });
+
+        document.getElementById("switch-to-login").addEventListener("click", function() {
+            document.getElementById("register-container").classList.remove("active");
+            document.getElementById("login-container").classList.add("active");
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

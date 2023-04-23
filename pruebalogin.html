@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro e Inicio de sesión</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6f5f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .contenedor {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .form-contenedor {
+            padding: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s ease;
+        }
+
+        .overlay {
+            background-color: #2029d1;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s ease;
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .hidden {
+            left: -100%;
+        }
+
+        .overlay.move {
+            left: 0;
+        }
+
+        .form-contenedor.move {
+            left: -100%;
+        }
+
+        input {
+            display: block;
+            font-size: 14px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #2029d1;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .switch {
+            cursor: pointer;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="form-contenedor">
+            <form id="sign-in-form">
+                <h2>Iniciar Sesión</h2>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <div class="switch" id="switch">
+                <span>¿No tienes una cuenta? Regístrate</span>
+            </div>
+        </div>
+        <div class="form-contenedor hidden">
+            <form id="sign-up-form">
+                <h2>Registrarse</h2>
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Correo electrónico" required
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <div class="switch" id="switch-back">
+                <span>¿Ya tienes una cuenta? Inicia sesión</span>
+            </div>
+        </div>
+        <div class="overlay">
+            <div class="overlay-text">
+                Bienvenido
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const signInForm = document.getElementById("sign-in-form");
+        const signUpForm = document.getElementById("sign-up-form");
+        const switchBtn = document.getElementById("switch");
+        const switchBackBtn = document.getElementById("switch-back");
+        const contenedor = document.querySelector(".contenedor");
+        const overlay = document.querySelector(".overlay");
+        const formContenedor = document.querySelectorAll(".form-contenedor");
+    
+        switchBtn.addEventListener("click", () => {
+            contenedor.classList.add("hidden");
+            overlay.classList.add("move");
+            formContenedor[0].classList.add("move");
+            formContenedor[1].classList.remove("hidden");
+        });
+    
+        switchBackBtn.addEventListener("click", () => {
+            contenedor.classList.remove("hidden");
+            overlay.classList.remove("move");
+            formContenedor[0].classList.remove("move");
+            formContenedor[1].classList.add("hidden");
+        });
+    </script>
+</body>
+</html>    
